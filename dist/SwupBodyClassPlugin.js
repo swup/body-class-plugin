@@ -144,7 +144,7 @@ var BodyClassPlugin = function (_Plugin) {
 
 		var _this = _possibleConstructorReturn(this, (BodyClassPlugin.__proto__ || Object.getPrototypeOf(BodyClassPlugin)).call(this));
 
-		_this.name = 'SwupBodyClassPlugin';
+		_this.name = 'BodyClassPlugin';
 
 
 		var defaultOptions = {

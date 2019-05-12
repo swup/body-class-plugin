@@ -1,7 +1,7 @@
 import Plugin from '@swup/plugin';
 
 export default class BodyClassPlugin extends Plugin {
-	name = 'SwupBodyClassPlugin';
+	name = 'BodyClassPlugin';
 
 	constructor(options) {
 		super();
