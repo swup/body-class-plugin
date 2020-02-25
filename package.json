@@ -1,6 +1,6 @@
 {
   "name": "@swup/body-class-plugin",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Swup plugin for replacing content of body class.",
   "main": "lib/index.js",
   "scripts": {

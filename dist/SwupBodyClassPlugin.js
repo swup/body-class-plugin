@@ -183,7 +183,7 @@ var BodyClassPlugin = function (_Plugin) {
 	}, {
 		key: 'isValidClassName',
 		value: function isValidClassName(className) {
-			return className !== '' && className.includes(this.options.prefix);
+			return className !== '' && className.indexOf(this.options.prefix) !== -1;
 		}
 	}]);
 

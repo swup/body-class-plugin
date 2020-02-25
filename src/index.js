@@ -39,6 +39,6 @@ export default class BodyClassPlugin extends Plugin {
 	}
 
 	isValidClassName(className) {
-		return className !== '' && className.includes(this.options.prefix);
+		return className !== '' && className.indexOf(this.options.prefix) !== -1;
 	}
 }
