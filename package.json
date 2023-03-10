@@ -1,7 +1,7 @@
 {
   "name": "@swup/body-class-plugin",
   "amdName": "SwupBodyClassPlugin",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Swup plugin for replacing content of body class.",
   "type": "module",
   "source": "src/index.js",
