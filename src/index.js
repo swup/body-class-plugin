@@ -13,28 +13,30 @@ export default class BodyClassPlugin extends Plugin {
 	}
 
 	mount() {
-		this.swup.on('contentReplaced', () => {
-			const page = this.swup.cache.getCurrentPage();
+		this.swup.hooks.on('replaceContent', (context, { page: { html } }) => {
+			const doc = new DOMParser().parseFromString(html, 'text/html');
+			const body = doc.querySelector('body');
+			this.updateClassNames(body);
+		});
+	}
 
-			// remove old classes
-			document.body.className.split(' ').forEach((className) => {
-				if (this.isValidClassName(className)) {
-					document.body.classList.remove(className);
-				}
-			});
+	updateClassNames(body) {
+		// remove old classes
+		document.body.classList.forEach((className) => {
+			if (this.isValidClassName(className)) {
+				document.body.classList.remove(className);
+			}
+		});
 
-			// add new classes
-			if (page.pageClass !== '') {
-				page.pageClass.split(' ').forEach((className) => {
-					if (this.isValidClassName(className)) {
-						document.body.classList.add(className);
-					}
-				});
+		// add new classes
+		body.classList.forEach((className) => {
+			if (this.isValidClassName(className)) {
+				document.body.classList.add(className);
 			}
 		});
 	}
 
 	isValidClassName(className) {
-		return className !== '' && className.indexOf(this.options.prefix) !== -1;
+		return className && className.startsWith(this.options.prefix);
 	}
 }
