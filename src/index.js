@@ -2,18 +2,14 @@ import Plugin from '@swup/plugin';
 
 export default class BodyClassPlugin extends Plugin {
 	name = 'BodyClassPlugin';
+	requires = { swup: '>=4' };
+	defaults = {
+		prefix: ''
+	};
 
 	constructor(options) {
 		super();
-
-		const defaultOptions = {
-			prefix: ''
-		};
-
-		this.options = {
-			...defaultOptions,
-			...options
-		};
+		this.options = { ...this.defaults, ...options };
 	}
 
 	mount() {
