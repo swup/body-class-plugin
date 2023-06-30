@@ -6,7 +6,8 @@
 
 ## [2.0.0] - 2023-03-10
 
-- Update for swup 3 compatibility
+- Switch to microbundle
+- Export native ESM module
 
 ## [1.0.2] - 2020-02-25
 

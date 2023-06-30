@@ -17,7 +17,7 @@ import SwupBodyClassPlugin from '@swup/body-class-plugin';
 Or include the minified production file from a CDN:
 
 ```html
-<script src="https://unpkg.com/@swup/body-class-plugin@4"></script>
+<script src="https://unpkg.com/@swup/body-class-plugin@3"></script>
 ```
 
 ## Usage
