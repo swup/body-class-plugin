@@ -1,7 +1,7 @@
 import Plugin from '@swup/plugin';
 
-export default class BodyClassPlugin extends Plugin {
-	name = 'BodyClassPlugin';
+export default class SwupBodyClassPlugin extends Plugin {
+	name = 'SwupBodyClassPlugin';
 	requires = { swup: '>=4' };
 	defaults = {
 		prefix: ''
