@@ -2,7 +2,9 @@ import Plugin from '@swup/plugin';
 
 export default class SwupBodyClassPlugin extends Plugin {
 	name = 'SwupBodyClassPlugin';
+
 	requires = { swup: '>=4' };
+
 	defaults = {
 		prefix: ''
 	};
