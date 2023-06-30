@@ -1,10 +1,6 @@
 # Swup Body Class Plugin
 
-<!-- swup-docs-ignore-start -->
-This is a plugin for the [swup](https://swup.js.org/) page transition library.
-<!-- swup-docs-ignore-end -->
-
-Update the `body` classname after each page load.
+A [swup](https://swup.js.org) plugin for updating the `body` classname after each page load.
 
 ## Installation
 
