@@ -7,33 +7,27 @@ export default class BodyClassPlugin extends Plugin {
 		prefix: ''
 	};
 
-	constructor(options) {
+	constructor(options = {}) {
 		super();
 		this.options = { ...this.defaults, ...options };
 	}
 
 	mount() {
 		this.swup.hooks.on('replaceContent', (context, { page: { html } }) => {
-			const doc = new DOMParser().parseFromString(html, 'text/html');
-			const body = doc.querySelector('body');
-			this.updateClassNames(body);
+			this.updateClassNames(document.body, this.getBodyElement(html));
 		});
 	}
 
-	updateClassNames(body) {
-		// remove old classes
-		document.body.classList.forEach((className) => {
-			if (this.isValidClassName(className)) {
-				document.body.classList.remove(className);
-			}
-		});
+	getBodyElement(html) {
+		const doc = new DOMParser().parseFromString(html, 'text/html');
+		return doc.querySelector('body');
+	}
 
-		// add new classes
-		body.classList.forEach((className) => {
-			if (this.isValidClassName(className)) {
-				document.body.classList.add(className);
-			}
-		});
+	updateClassNames(el, newEl) {
+		const remove = [...el.classList].filter((className) => this.isValidClassName(className));
+		const add = [...newEl.classList].filter((className) => this.isValidClassName(className));
+		el.classList.remove(...remove);
+		el.classList.add(...add);
 	}
 
 	isValidClassName(className) {
