@@ -1,26 +1,27 @@
-# Swup Body Class plugin
+# Swup Body Class Plugin
 
-Some CSS styles are very often based on the class of the page defined in the `body` element.
-Swup replaces the `body` classes for each loaded page.
+<!-- swup-docs-ignore-start -->
+This is a plugin for the [swup](https://swup.js.org/) page transition library.
+<!-- swup-docs-ignore-end -->
+
+Update the `body` classname after each page load.
 
 ## Installation
 
-This plugin can be installed with npm
+Install the plugin from npm and import it into your bundle.
 
 ```bash
 npm install @swup/body-class-plugin
 ```
 
-and included with import
-
-```shell
+```js
 import SwupBodyClassPlugin from '@swup/body-class-plugin';
 ```
 
-or included from the dist folder
+Or include the minified production file from a CDN:
 
 ```html
-<script src="./dist/SwupBodyClassPlugin.js"></script>
+<script src="https://unpkg.com/@swup/body-class-plugin@4"></script>
 ```
 
 ## Usage
@@ -35,12 +36,14 @@ const swup = new Swup({
 
 ## Options
 
-In some cases, the site may use the `body` class attribute for functionality such as opening of some sort of menu by adding class to the body element.
-In that case, you may want to define a prefix for your page style classes such as `page-`, so only those are replaced by swup.
-By default option is set to `''` and all classes of body element are replaced during the transition.
+### prefix
+
+By default, all classes are updated. If your site uses classes on the body element for functionality
+like opening menus, you can tell the plugin to only update classnames starting with a prefix,
+e.g. `page-`. It will then only update those classes and leave all other classes untouched.
 
 ```javascript
-const bodyClassPlugin = new SwupBodyClassPlugin({
-  prefix: ''
-});
+{
+  prefix: 'page-'
+}
 ```
