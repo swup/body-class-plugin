@@ -2,7 +2,7 @@
   "name": "@swup/body-class-plugin",
   "amdName": "SwupBodyClassPlugin",
   "version": "2.0.1",
-  "description": "Swup plugin for replacing content of body class.",
+  "description": "A swup plugin for updating the body class names",
   "type": "module",
   "source": "src/index.js",
   "main": "./dist/index.cjs",
