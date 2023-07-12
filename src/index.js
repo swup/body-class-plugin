@@ -15,11 +15,11 @@ export default class SwupBodyClassPlugin extends Plugin {
 	}
 
 	mount() {
-		this.swup.hooks.on('replaceContent', this.updateBodyClass);
+		this.swup.hooks.on('content:replace', this.updateBodyClass);
 	}
 
 	unmount() {
-		this.swup.hooks.off('replaceContent', this.updateBodyClass);
+		this.swup.hooks.off('content:replace', this.updateBodyClass);
 	}
 
 	updateBodyClass = (context, { page: { html } }) => {
