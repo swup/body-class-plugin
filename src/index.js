@@ -1,44 +1,40 @@
 import Plugin from '@swup/plugin';
 
-export default class BodyClassPlugin extends Plugin {
-	name = 'BodyClassPlugin';
+export default class SwupBodyClassPlugin extends Plugin {
+	name = 'SwupBodyClassPlugin';
 
-	constructor(options) {
+	requires = { swup: '>=4' };
+
+	defaults = {
+		prefix: ''
+	};
+
+	constructor(options = {}) {
 		super();
-
-		const defaultOptions = {
-			prefix: ''
-		};
-
-		this.options = {
-			...defaultOptions,
-			...options
-		};
+		this.options = { ...this.defaults, ...options };
 	}
 
 	mount() {
-		this.swup.on('contentReplaced', () => {
-			const page = this.swup.cache.getCurrentPage();
+		this.on('content:replace', this.updateBodyClass);
+	}
 
-			// remove old classes
-			document.body.className.split(' ').forEach((className) => {
-				if (this.isValidClassName(className)) {
-					document.body.classList.remove(className);
-				}
-			});
+	updateBodyClass(visit, { page: { html } }) {
+		this.updateClassNames(document.body, this.getBodyElement(html));
+	}
 
-			// add new classes
-			if (page.pageClass !== '') {
-				page.pageClass.split(' ').forEach((className) => {
-					if (this.isValidClassName(className)) {
-						document.body.classList.add(className);
-					}
-				});
-			}
-		});
+	getBodyElement(html) {
+		const doc = new DOMParser().parseFromString(html, 'text/html');
+		return doc.querySelector('body');
+	}
+
+	updateClassNames(el, newEl) {
+		const remove = [...el.classList].filter((className) => this.isValidClassName(className));
+		const add = [...newEl.classList].filter((className) => this.isValidClassName(className));
+		el.classList.remove(...remove);
+		el.classList.add(...add);
 	}
 
 	isValidClassName(className) {
-		return className !== '' && className.indexOf(this.options.prefix) !== -1;
+		return className && className.startsWith(this.options.prefix);
 	}
 }
