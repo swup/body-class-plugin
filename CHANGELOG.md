@@ -2,6 +2,14 @@
 
 <!-- ## [Unreleased] -->
 
+## [3.1.1] - 2023-07-30
+
+- Fix missing `dist/` folder in npm package
+
+## [3.1.0] - 2023-07-30
+
+- Port to TypeScript
+
 ## [3.0.0] - 2023-07-26
 
 - Update for swup 4 compatibility
@@ -25,6 +33,8 @@
 
 [Unreleased]: https://github.com/swup/body-class-plugin/compare/3.0.0...HEAD
 
+[3.1.1]: https://github.com/swup/body-class-plugin/releases/tag/3.1.1
+[3.1.0]: https://github.com/swup/body-class-plugin/releases/tag/3.1.0
 [3.0.0]: https://github.com/swup/body-class-plugin/releases/tag/3.0.0
 [2.0.0]: https://github.com/swup/body-class-plugin/releases/tag/2.0.0
 [1.0.2]: https://github.com/swup/body-class-plugin/releases/tag/1.0.2
