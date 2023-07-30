@@ -1,15 +1,22 @@
+import { Handler } from 'swup';
 import Plugin from '@swup/plugin';
+
+type Options = {
+	/** If set, only classes beginning with this string will be added/removed. */
+	prefix: string;
+};
 
 export default class SwupBodyClassPlugin extends Plugin {
 	name = 'SwupBodyClassPlugin';
 
 	requires = { swup: '>=4' };
 
-	defaults = {
+	defaults: Options = {
 		prefix: ''
 	};
+	options: Options;
 
-	constructor(options = {}) {
+	constructor(options: Partial<Options> = {}) {
 		super();
 		this.options = { ...this.defaults, ...options };
 	}
@@ -18,23 +25,23 @@ export default class SwupBodyClassPlugin extends Plugin {
 		this.on('content:replace', this.updateBodyClass);
 	}
 
-	updateBodyClass(visit, { page: { html } }) {
+	updateBodyClass: Handler<'content:replace'> = (visit, { page: { html } }) => {
 		this.updateClassNames(document.body, this.getBodyElement(html));
-	}
+	};
 
-	getBodyElement(html) {
+	getBodyElement(html: string): HTMLElement {
 		const doc = new DOMParser().parseFromString(html, 'text/html');
-		return doc.querySelector('body');
+		return doc.querySelector<HTMLElement>('body')!;
 	}
 
-	updateClassNames(el, newEl) {
+	updateClassNames(el: HTMLElement, newEl: HTMLElement) {
 		const remove = [...el.classList].filter((className) => this.isValidClassName(className));
 		const add = [...newEl.classList].filter((className) => this.isValidClassName(className));
 		el.classList.remove(...remove);
 		el.classList.add(...add);
 	}
 
-	isValidClassName(className) {
+	isValidClassName(className: string) {
 		return className && className.startsWith(this.options.prefix);
 	}
 }

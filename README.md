@@ -1,6 +1,6 @@
 # Swup Body Class Plugin
 
-A [swup](https://swup.js.org) plugin for updating the `body` classname after each page load.
+A [swup](https://swup.js.org) plugin for updating the body classname after each page load.
 
 ## Installation
 
