@@ -2,6 +2,10 @@
 
 <!-- ## [Unreleased] -->
 
+## [3.1.2] - 2023-09-25
+
+- Use `@swup/cli` for bundling
+
 ## [3.1.1] - 2023-07-30
 
 - Fix missing `dist/` folder in npm package
@@ -31,8 +35,9 @@
 
 - Initial release
 
-[Unreleased]: https://github.com/swup/body-class-plugin/compare/3.0.0...HEAD
+[Unreleased]: https://github.com/swup/body-class-plugin/compare/3.1.2...HEAD
 
+[3.1.2]: https://github.com/swup/body-class-plugin/releases/tag/3.1.2
 [3.1.1]: https://github.com/swup/body-class-plugin/releases/tag/3.1.1
 [3.1.0]: https://github.com/swup/body-class-plugin/releases/tag/3.1.0
 [3.0.0]: https://github.com/swup/body-class-plugin/releases/tag/3.0.0
