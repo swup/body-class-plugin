@@ -1,7 +1,5 @@
 # Changelog
 
-<!-- ## [Unreleased] -->
-
 ## [3.1.2] - 2023-09-25
 
 - Use `@swup/cli` for bundling
@@ -34,8 +32,6 @@
 ## [1.0.0] - 2019-05-11
 
 - Initial release
-
-[Unreleased]: https://github.com/swup/body-class-plugin/compare/3.1.2...HEAD
 
 [3.1.2]: https://github.com/swup/body-class-plugin/releases/tag/3.1.2
 [3.1.1]: https://github.com/swup/body-class-plugin/releases/tag/3.1.1
