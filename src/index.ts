@@ -25,14 +25,9 @@ export default class SwupBodyClassPlugin extends Plugin {
 		this.on('content:replace', this.updateBodyClass);
 	}
 
-	updateBodyClass: Handler<'content:replace'> = (visit, { page: { html } }) => {
-		this.updateClassNames(document.body, this.getBodyElement(html));
+	updateBodyClass: Handler<'content:replace'> = (visit) => {
+		this.updateClassNames(document.body, visit.to.document!.body);
 	};
-
-	getBodyElement(html: string): HTMLElement {
-		const doc = new DOMParser().parseFromString(html, 'text/html');
-		return doc.querySelector<HTMLElement>('body')!;
-	}
 
 	updateClassNames(el: HTMLElement, newEl: HTMLElement) {
 		const remove = [...el.classList].filter((className) => this.isValidClassName(className));
