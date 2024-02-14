@@ -9,7 +9,7 @@ type Options = {
 export default class SwupBodyClassPlugin extends Plugin {
 	name = 'SwupBodyClassPlugin';
 
-	requires = { swup: '>=4' };
+	requires = { swup: '>=4.6' };
 
 	defaults: Options = {
 		prefix: ''
