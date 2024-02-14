@@ -25,18 +25,18 @@ export default class SwupBodyClassPlugin extends Plugin {
 		this.on('content:replace', this.updateBodyClass);
 	}
 
-	updateBodyClass: Handler<'content:replace'> = (visit) => {
+	protected updateBodyClass: Handler<'content:replace'> = (visit) => {
 		this.updateClassNames(document.body, visit.to.document!.body);
 	};
 
-	updateClassNames(el: HTMLElement, newEl: HTMLElement) {
+	protected updateClassNames(el: HTMLElement, newEl: HTMLElement) {
 		const remove = [...el.classList].filter((className) => this.isValidClassName(className));
 		const add = [...newEl.classList].filter((className) => this.isValidClassName(className));
 		el.classList.remove(...remove);
 		el.classList.add(...add);
 	}
 
-	isValidClassName(className: string) {
+	protected isValidClassName(className: string) {
 		return className && className.startsWith(this.options.prefix);
 	}
 }
