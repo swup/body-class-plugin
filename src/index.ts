@@ -1,5 +1,6 @@
 import { Handler } from 'swup';
 import Plugin from '@swup/plugin';
+import { updateClassNames } from './classes.js';
 
 type Options = {
 	/** If set, only classes beginning with this string will be added/removed. */
@@ -26,17 +27,7 @@ export default class SwupBodyClassPlugin extends Plugin {
 	}
 
 	protected updateBodyClass: Handler<'content:replace'> = (visit) => {
-		this.updateClassNames(document.body, visit.to.document!.body);
+		const { prefix } = this.options;
+		updateClassNames(document.body, visit.to.document!.body, { prefix });
 	};
-
-	protected updateClassNames(el: HTMLElement, newEl: HTMLElement) {
-		const remove = [...el.classList].filter((className) => this.isValidClassName(className));
-		const add = [...newEl.classList].filter((className) => this.isValidClassName(className));
-		el.classList.remove(...remove);
-		el.classList.add(...add);
-	}
-
-	protected isValidClassName(className: string) {
-		return className && className.startsWith(this.options.prefix);
-	}
 }
