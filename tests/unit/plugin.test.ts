@@ -29,6 +29,11 @@ describe('SwupBodyClassPlugin', () => {
 		swup.destroy();
 	});
 
+	it('merges user options', async () => {
+		const plugin = new SwupBodyClassPlugin({ prefix: 'pre-' });
+		expect(plugin.options).toMatchObject({ prefix: 'pre-' });
+	});
+
 	it('updates body classname from content:replace hook handler', async () => {
 		const classes = await import('../../src/classes.js');
 		const spy = vitest.spyOn(classes, 'updateClassNames');
