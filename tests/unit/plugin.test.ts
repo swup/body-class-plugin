@@ -43,10 +43,8 @@ describe('SwupBodyClassPlugin', () => {
 		await swup.hooks.call('content:replace', visit, page);
 
 		expect(spy).toHaveBeenCalledOnce();
-		expect(spy).toHaveBeenCalledWith(
-			document.body,
-			visit.to.document!.body,
-			{ prefix: plugin.options.prefix }
-		);
+		expect(spy).toHaveBeenCalledWith(document.body, visit.to.document!.body, {
+			prefix: plugin.options.prefix
+		});
 	});
 });
