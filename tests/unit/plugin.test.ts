@@ -31,14 +31,12 @@ describe('SwupBodyClassPlugin', () => {
 
 	it('merges user options', async () => {
 		const plugin = new SwupBodyClassPlugin({ prefix: 'pre-' });
-		expect(plugin.options).toMatchObject({ prefix: 'pre-' });
+		expect(plugin.options).toMatchObject({ prefix: 'pre-', attributes: [] });
 	});
 
 	it('updates body classname from content:replace hook handler', async () => {
 		const classes = await import('../../src/classes.js');
 		const spy = vitest.spyOn(classes, 'updateClassNames');
-		// classes.updateClassNames = vitest.fn()
-		// 	.mockImplementation(() => ({ removed: [], added: [] }));
 
 		await swup.hooks.call('content:replace', visit, page);
 
@@ -46,5 +44,16 @@ describe('SwupBodyClassPlugin', () => {
 		expect(spy).toHaveBeenCalledWith(document.body, visit.to.document!.body, {
 			prefix: plugin.options.prefix
 		});
+	});
+
+	it('updates attributes from content:replace hook handler', async () => {
+		const attributes = await import('../../src/attributes.js');
+		const spy = vitest.spyOn(attributes, 'updateAttributes');
+
+		plugin.options.attributes = ['lang', /^aria-/];
+		await swup.hooks.call('content:replace', visit, page);
+
+		expect(spy).toHaveBeenCalledOnce();
+		expect(spy).toHaveBeenCalledWith(document.body, visit.to.document!.body, ['lang', /^aria-/]);
 	});
 });
