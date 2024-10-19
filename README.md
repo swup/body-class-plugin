@@ -43,3 +43,15 @@ e.g. `page-`. It will then only update those classes and leave all other classes
   prefix: 'page-'
 }
 ```
+
+### attributes
+
+Update additional attributes of the body element. Useful if you have defined the `lang` or `dir`
+attributes or work with `data-*` attributes on the body element. Accepts an array of strings or
+regular expression instances.
+
+```javascript
+{
+  attributes: ['lang', 'dir', /^data-/]
+}
+```
